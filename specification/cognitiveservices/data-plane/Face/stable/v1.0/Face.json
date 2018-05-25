@@ -1356,7 +1356,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "description": "Type of an accessory",
+          "description": "Type of an accessory", 
           "enum": [
             "headWear",
             "glasses",
