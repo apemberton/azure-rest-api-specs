@@ -17,14 +17,6 @@
       "apim_key": []
     }
   ],
-  "x-ms-parameterized-host": {
-    "hostTemplate": "{AzureRegion}.api.cognitive.microsoft.com",
-    "parameters": [
-      {
-        "$ref": "../../../Common/ExtendedRegions.json#/parameters/AzureRegion"
-      }
-    ]
-  },
   "basePath": "/face/v1.0",
   "schemes": [
     "https"
@@ -40,7 +32,6 @@
             "in": "body",
             "description": "Request body for Find Similar.",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/FindSimilarRequest"
             }
@@ -65,11 +56,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Find similar results example": {
-            "$ref": "./examples/FindSimilar.json"
-          }
         }
       }
     },
@@ -83,7 +69,6 @@
             "description": "Request body for grouping.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/GroupRequest"
             }
@@ -108,11 +93,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Group example": {
-            "$ref": "./examples/Group.json"
-          }
         }
       }
     },
@@ -126,7 +106,6 @@
             "description": "Request body for identify operation.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/IdentifyRequest"
             }
@@ -151,11 +130,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Identiy example": {
-            "$ref": "./examples/Identify.json"
-          }
         }
       }
     },
@@ -169,7 +143,6 @@
             "description": "Request body for verify operation.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/VerifyFaceToFaceRequest"
             }
@@ -194,11 +167,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Verify faces example": {
-            "$ref": "./examples/VerifyFaceToFace.json"
-          }
         }
       }
     },
@@ -215,7 +183,6 @@
             "description": "Request body for creating new person.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/NameAndUserDataContract"
             }
@@ -239,11 +206,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create new person example": {
-            "$ref": "./examples/CreateNewPerson.json"
           }
         }
       },
@@ -287,11 +249,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "List persons in person group": {
-            "$ref": "./examples/ListPersonGroupPersons.json"
-          }
         }
       }
     },
@@ -316,11 +273,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete an existing person example": {
-            "$ref": "./examples/DeletePerson.json"
           }
         }
       },
@@ -351,11 +303,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Get person example": {
-            "$ref": "./examples/GetPerson.json"
-          }
         }
       },
       "patch": {
@@ -373,7 +320,6 @@
             "description": "Request body for person update operation.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/NameAndUserDataContract"
             }
@@ -391,11 +337,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update person example": {
-            "$ref": "./examples/UpdatePerson.json"
           }
         }
       }
@@ -424,11 +365,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete face from person example": {
-            "$ref": "./examples/DeletePersonFace.json"
           }
         }
       },
@@ -462,11 +398,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Get persisted face example": {
-            "$ref": "./examples/GetPersistedFace.json"
-          }
         }
       },
       "patch": {
@@ -487,7 +418,6 @@
             "description": "Request body for updating persisted face.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/UpdatePersonFaceRequest"
             }
@@ -506,11 +436,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Update person face example": {
-            "$ref": "./examples/UpdatePersonFace.json"
-          }
         }
       }
     },
@@ -527,7 +452,6 @@
             "description": "Request body for creating new person group.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/NameAndUserDataContract"
             }
@@ -545,11 +469,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create new person group example": {
-            "$ref": "./examples/CreateNewPersonGroup.json"
           }
         }
       },
@@ -570,11 +489,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete a person group example": {
-            "$ref": "./examples/DeletePersonGroup.json"
           }
         }
       },
@@ -602,12 +516,7 @@
         },
         "produces": [
           "application/json"
-        ],
-        "x-ms-examples": {
-          "Get person group example": {
-            "$ref": "./examples/GetPersonGroup.json"
-          }
-        }
+        ]
       },
       "patch": {
         "description": "Update an existing person group's display name and userData. The properties which does not appear in request body will not be updated.",
@@ -621,7 +530,6 @@
             "description": "Request body for updating person group.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/NameAndUserDataContract"
             }
@@ -639,11 +547,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update person group example": {
-            "$ref": "./examples/UpdatePersonGroup.json"
           }
         }
       }
@@ -673,12 +576,7 @@
         },
         "produces": [
           "application/json"
-        ],
-        "x-ms-examples": {
-          "Get training status example": {
-            "$ref": "./examples/GetTrainingStatus.json"
-          }
-        }
+        ]
       }
     },
     "/persongroups": {
@@ -721,11 +619,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Get person groups example": {
-            "$ref": "./examples/GetPersonGroups.json"
-          }
         }
       }
     },
@@ -751,11 +644,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Queue person group training": {
-            "$ref": "./examples/QueueTraining.json"
-          }
         }
       }
     },
@@ -772,7 +660,6 @@
             "description": "Request body for creating a face list.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/NameAndUserDataContract"
             }
@@ -793,11 +680,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Create new face list example": {
-            "$ref": "./examples/CreateNewFaceList.json"
           }
         }
       },
@@ -825,11 +707,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Get Face list example": {
-            "$ref": "./examples/GetFaceList.json"
-          }
         }
       },
       "patch": {
@@ -844,7 +721,6 @@
             "description": "Request body for updating a face list.",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/NameAndUserDataContract"
             }
@@ -862,11 +738,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Update face list example": {
-            "$ref": "./examples/UpdateFaceList.json"
           }
         }
       },
@@ -887,11 +758,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete face list example": {
-            "$ref": "./examples/DeleteFaceList.json"
           }
         }
       }
@@ -917,12 +783,7 @@
         },
         "produces": [
           "application/json"
-        ],
-        "x-ms-examples": {
-          "Get Face lists example": {
-            "$ref": "./examples/GetFaceLists.json"
-          }
-        }
+        ]
       }
     },
     "/facelists/{faceListId}/persistedFaces/{persistedFaceId}": {
@@ -946,11 +807,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Delete face in face list example": {
-            "$ref": "./examples/DeleteFaceListFace.json"
           }
         }
       }
@@ -994,11 +850,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Add Person face example": {
-            "$ref": "./examples/AddPersonFaceFromUrl.json"
           }
         }
       }
@@ -1048,11 +899,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Detect with url example": {
-            "$ref": "./examples/DetectWithUrl.json"
-          }
         }
       }
     },
@@ -1093,11 +939,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Create face list face example": {
-            "$ref": "./examples/AddFaceListFaceFromUrl.json"
-          }
         }
       }
     }
@@ -1113,7 +954,6 @@
             "description": "Request body for verifying two faces in a person group",
             "in": "body",
             "required": true,
-            "x-ms-client-flatten": true,
             "schema": {
               "$ref": "#/definitions/VerifyFaceToPersonRequest"
             }
@@ -1137,11 +977,6 @@
             "schema": {
               "$ref": "#/definitions/APIError"
             }
-          }
-        },
-        "x-ms-examples": {
-          "Verify face to person example": {
-            "$ref": "./examples/VerifyFaceToPerson.json"
           }
         }
       }
@@ -1191,11 +1026,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Detect with stream example": {
-            "$ref": "./examples/DetectWithStream.json"
-          }
         }
       }
     },
@@ -1239,11 +1069,6 @@
               "$ref": "#/definitions/APIError"
             }
           }
-        },
-        "x-ms-examples": {
-          "Add face to person with stream example": {
-            "$ref": "./examples/AddPersonFaceFromStream.json"
-          }
         }
       }
     },
@@ -1284,12 +1109,7 @@
         },
         "produces": [
           "application/json"
-        ],
-        "x-ms-examples": {
-          "Add face to face list from stream example": {
-            "$ref": "./examples/AddFaceListFaceFromStream.json"
-          }
-        }
+        ]
       }
     }
   },
