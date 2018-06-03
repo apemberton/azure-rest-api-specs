@@ -6,20 +6,12 @@
     "version": "1.0"
   },
   "parameters": {
-    "X-BingApis-SDK": {
+    "x-bingapis-sdk": {
       "name": "X-BingApis-SDK",
       "description": "Activate swagger compliance",
-      "x-ms-parameter-location": "method",
       "required": true,
       "type": "string",
-      "in": "header",
-      "x-ms-enum": {
-        "name": "XBingApisSDK",
-        "modelAsString": true
-      },
-      "enum": [
-        "true"
-      ]
+      "in": "header"
     }
   },
   "host": "api.cognitive.microsoft.com",
@@ -55,7 +47,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/parameters/X-BingApis-SDK"
+            "$ref": "#/parameters/x-bingapis-sdk"
           },
           {
             "name": "Accept",
