@@ -6,7 +6,7 @@
     "version": "1.0"
   },
   "parameters": {
-    "xbingapissdk": {
+    "x-bingapis-sdk": {
       "name": "X-BingApis-SDK",
       "description": "Activate swagger compliance",
       "x-ms-parameter-location": "method",
@@ -45,7 +45,7 @@
   "paths": {
     "/spellcheck": {
       "post": {
-        "description": "The Bing Spell Check API lets you perform contextual grammar and spell checking. Bing has developed a web-based spell-checker that leverages machine learning and statistical machine translation to dynamically train a constantly evolving and highly contextual algorithm. The spell-checker is based on a massive corpus of web searches and documents.",
+        "summary": "The Bing Spell Check API lets you perform contextual grammar and spell checking. Bing has developed a web-based spell-checker that leverages machine learning and statistical machine translation to dynamically train a constantly evolving and highly contextual algorithm. The spell-checker is based on a massive corpus of web searches and documents.",
         "operationId": "SpellChecker",
         "tags": [
           "SpellCheck"
@@ -53,19 +53,16 @@
         "consumes": [
           "application/x-www-form-urlencoded"
         ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
-          {
-            "$ref": "#/parameters/xbingapissdk"
-          },
           {
             "name": "Accept",
             "in": "header",
             "description": "The default media type is application/json. To specify that the response use [JSON-LD](http://json-ld.org/), set the Accept header to application/ld+json.",
             "required": false,
             "type": "string"
+          },
+          {
+            "$ref": "#/parameters/x-bingapis-sdk"
           },
           {
             "name": "Accept-Language",
