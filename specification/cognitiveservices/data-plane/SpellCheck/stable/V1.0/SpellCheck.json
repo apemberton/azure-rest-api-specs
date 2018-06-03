@@ -5,23 +5,6 @@
     "description": "The Spell Check API - V7 lets you check a text string for spelling and grammar errors.",
     "version": "1.0"
   },
-  "parameters": {
-    "x-bingapis-sdk": {
-      "name": "X-BingApis-SDK",
-      "description": "Activate swagger compliance",
-      "x-ms-parameter-location": "method",
-      "required": true,
-      "type": "string",
-      "in": "header",
-      "x-ms-enum": {
-        "name": "XBingApisSDK",
-        "modelAsString": true
-      },
-      "enum": [
-        "true"
-      ]
-    }
-  },
   "host": "api.cognitive.microsoft.com",
   "schemes": [
     "https"
@@ -55,14 +38,14 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/x-bingapis-sdk"
+          },
+          {
             "name": "Accept",
             "in": "header",
             "description": "The default media type is application/json. To specify that the response use [JSON-LD](http://json-ld.org/), set the Accept header to application/ld+json.",
             "required": false,
             "type": "string"
-          },
-          {
-            "$ref": "#/parameters/x-bingapis-sdk"
           },
           {
             "name": "Accept-Language",
@@ -463,6 +446,23 @@
           "type": "string"
         }
       }
+    }
+  },
+  "parameters": {
+    "x-bingapis-sdk": {
+      "name": "X-BingApis-SDK",
+      "description": "Activate swagger compliance",
+      "x-ms-parameter-location": "method",
+      "required": true,
+      "type": "string",
+      "in": "header",
+      "x-ms-enum": {
+        "name": "XBingApisSDK",
+        "modelAsString": true
+      },
+      "enum": [
+        "true"
+      ]
     }
   }
 }
