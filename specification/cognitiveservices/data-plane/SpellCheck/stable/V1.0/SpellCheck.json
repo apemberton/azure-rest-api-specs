@@ -5,6 +5,23 @@
     "description": "The Spell Check API - V7 lets you check a text string for spelling and grammar errors.",
     "version": "1.0"
   },
+  "parameters": {
+    "X-BingApis-SDK": {
+      "name": "X-BingApis-SDK",
+      "description": "Activate swagger compliance",
+      "x-ms-parameter-location": "method",
+      "required": true,
+      "type": "string",
+      "in": "header",
+      "x-ms-enum": {
+        "name": "XBingApisSDK",
+        "modelAsString": true
+      },
+      "enum": [
+        "true"
+      ]
+    }
+  },
   "host": "api.cognitive.microsoft.com",
   "schemes": [
     "https"
@@ -38,7 +55,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/parameters/x-bingapis-sdk"
+            "$ref": "#/parameters/X-BingApis-SDK"
           },
           {
             "name": "Accept",
@@ -446,23 +463,6 @@
           "type": "string"
         }
       }
-    }
-  },
-  "parameters": {
-    "x-bingapis-sdk": {
-      "name": "X-BingApis-SDK",
-      "description": "Activate swagger compliance",
-      "x-ms-parameter-location": "method",
-      "required": true,
-      "type": "string",
-      "in": "header",
-      "x-ms-enum": {
-        "name": "XBingApisSDK",
-        "modelAsString": true
-      },
-      "enum": [
-        "true"
-      ]
     }
   }
 }
