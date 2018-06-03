@@ -6,7 +6,7 @@
     "version": "1.0"
   },
   "parameters": {
-    "x-bingapis-sdk": {
+    "xbingapissdk": {
       "name": "X-BingApis-SDK",
       "description": "Activate swagger compliance",
       "x-ms-parameter-location": "method",
@@ -58,7 +58,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/parameters/x-bingapis-sdk"
+            "$ref": "#/parameters/xbingapissdk"
           },
           {
             "name": "Accept",
