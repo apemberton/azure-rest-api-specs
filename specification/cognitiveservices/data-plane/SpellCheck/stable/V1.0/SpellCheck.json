@@ -18,7 +18,7 @@
         "modelAsString": true
       },
       "enum": [
-        "true"  
+        "true"
       ]
     }
   },
@@ -234,33 +234,22 @@
               "$ref": "#/definitions/ErrorResponse"
             }
           }
-        },
-        "x-ms-examples": {
-          "Successful query": {
-            "$ref": "./examples/SuccessfulSpellModeRequest.json"
-          },
-          "Successful Proof Mode query": {
-            "$ref": "./examples/SuccessfulProofModeRequest.json"
-          }
         }
       }
     }
   },
   "definitions": {
     "SpellCheck": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Answer"
+        }
+      ],
       "type": "object",
       "required": [
         "flaggedTokens"
       ],
       "properties": {
-        "_type": {
-          "type": "string"
-        },
-        "id": {
-          "description": "A String identifier.",
-          "readOnly": true,
-          "type": "string"
-        },
         "flaggedTokens": {
           "type": "array",
           "items": {
@@ -268,6 +257,15 @@
           }
         }
       }
+    },
+    "Answer": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Response"
+        }
+      ],
+      "type": "object",
+      "properties": {}
     },
     "SpellingFlaggedToken": {
       "x-ms-discriminator-value": "Spelling/FlaggedToken",
@@ -310,6 +308,16 @@
         }
       }
     },
+    "Response": {
+      "description": "Defines a response. All schemas that could be returned at the root of a response should inherit from this",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Identifiable"
+        }
+      ],
+      "type": "object",
+      "properties": {}
+    },
     "SpellingTokenSuggestion": {
       "x-ms-discriminator-value": "Spelling/TokenSuggestion",
       "type": "object",
@@ -331,27 +339,52 @@
         }
       }
     },
+    "Identifiable": {
+      "description": "Defines the identity of a resource.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ResponseBase"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "A String identifier.",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
     "ErrorResponse": {
       "description": "The top-level response that represents a failed request.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Response"
+        }
+      ],
       "type": "object",
       "required": [
         "errors"
       ],
       "properties": {
-        "_type": {
-          "type": "string"
-        },
-        "id": {
-          "description": "A String identifier.",
-          "readOnly": true,
-          "type": "string"
-        },
         "errors": {
           "description": "A list of errors that describe the reasons why the request failed.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Error"
           }
+        }
+      }
+    },
+    "ResponseBase": {
+      "discriminator": "_type",
+      "type": "object",
+      "required": [
+        "_type"
+      ],
+      "properties": {
+        "_type": {
+          "type": "string"
         }
       }
     },
