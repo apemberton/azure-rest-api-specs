@@ -17,13 +17,13 @@
       "apim_key": []
     }
   ],
-  "basePath": "/speech/recognition/",
+  "basePath": "/speech",
   "host": "speech.platform.bing.com",
   "schemes": [
     "https"
   ],
   "paths": {
-    "${recognitionMode}/cognitiveservices/v1": {
+    "/recognition/{recognitionMode}/cognitiveservices/v1": {
       "post": {
         "description": "Given query face's faceId, find the similar-looking faces from a faceId array or a faceListId.",
         "operationId": "SpeechRecognition",
@@ -35,7 +35,7 @@
           "application/json"
         ],
         "parameters": [
-          "recognitionMode": {
+          {
             "name": "recognitionMode",
             "in": "path",
             "description": "",
@@ -68,10 +68,7 @@
             }
           },
           "default": {
-            "description": "Error response.",
-            "schema": {
-              "$ref": "#/definitions/APIError"
-            }
+            "description": "Error response."
           }
         }
       }
