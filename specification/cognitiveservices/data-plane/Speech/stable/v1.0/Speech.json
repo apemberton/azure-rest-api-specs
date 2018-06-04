@@ -36,6 +36,12 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/language"
+          },
+          {
+            "$ref": "#/parameters/format"
+          },
+          {
             "name": "recognitionMode",
             "in": "path",
             "description": "",
