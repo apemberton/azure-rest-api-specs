@@ -1,0 +1,160 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Speech API",
+    "description": "With cloud-based Speech Service, you can develop applications by using the REST API to convert spoken audio to text."
+  },
+  "securityDefinitions": {
+    "apim_key": {
+      "type": "apiKey",
+      "name": "Ocp-Apim-Subscription-Key",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apim_key": []
+    }
+  ],
+  "basePath": "/speech/recognition/",
+  "host": "speech.platform.bing.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "${recognitionMode}/cognitiveservices/v1": {
+      "post": {
+        "description": "Given query face's faceId, find the similar-looking faces from a faceId array or a faceListId.",
+        "operationId": "SpeechRecognition",
+        "consumes": [
+          "application/octet-stream",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          "recognitionMode": {
+            "name": "recognitionMode",
+            "in": "path",
+            "description": "",
+            "type": "string",
+            "required": true,
+            "enum": [
+              "interactive",
+              "conversation",
+              "dictation"
+            ],
+          },
+          {
+            "name": "profanity",
+            "in": "query",
+            "description": "You can control how the service handles profanity by using the profanity query parameter. By default, the service masks profanity in speech.phrase results and does not return speech.hypothesis messages that contain profanity.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "masked",
+              "removed",
+              "raw"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SpeechRecognitionResponse"
+            }
+          },
+          "default": {
+            "description": "Error response.",
+            "schema": {
+              "$ref": "#/definitions/APIError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SpeechRecognitionResponse": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "recognitionStatus": {
+          "type": "string",
+          "description": "RecognitionStatus specifies the status of the recognition. ",
+          "enum": [
+            "Success",
+            "NoMatch",
+            "InitialSilenceTimeout",
+            "BabbleTimeout",
+            "Error"
+          ]
+        },
+        "offset": {
+          "type": "string",
+          "description": "Offset specifies the offset (in 100-nanosecond units) at which the phrase was recognized, relative to the start of the audio stream."
+        },
+        "duration": {
+          "type": "string",
+          "description": "Durations pecifies the duration (in 100-nanosecond units) of this speech phrase."
+        },
+        "NBest": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NBest"
+          }
+        }
+      }
+    },
+    "NBest": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "Confidence": {
+          "type": "string",
+          "description": "Confidence, which represents the confidence scores of this entry."
+        },
+        "Lexical": {
+          "type": "string",
+          "description": "Lexical, which is the lexical form of the recognized text."
+        },
+        "ITN": {
+          "type": "string",
+          "description": "ITN, which is the ITN form of the recognized text."
+        },
+        "MaskedITN": {
+          "type": "string",
+          "description": "MaskedITN, which is the masked ITN form of the recognized text."
+        },
+        "Display": {
+          "type": "string",
+          "description": "Display, which is the display form of the recognized text."
+        }
+      }
+    }
+  },
+  "parameters": {
+    "language": {
+      "name": "language",
+      "in": "query",
+      "description": "",
+      "type": "string",
+      "required": false
+    },
+    "format": {
+      "name": "format",
+      "in": "query",
+      "description": "You can control the phrase result format by specifying the format URL query parameter. By default, the service returns simple results.",
+      "type": "string",
+      "required": false,
+      "enum": [
+        "default",
+        "detailed",
+        "simple"
+      ]
+    }
+  }
+}
