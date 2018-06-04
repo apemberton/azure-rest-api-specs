@@ -36,7 +36,7 @@
           "Key Phrases"
         ],
         "summary": "The API returns a list of strings denoting the key talking points in the input text.",
-        "description": "See the <a href=\"https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages\">Text Analytics Documentation</a> for details about the languages that are supported by key phrase extraction.",
+        "description": "",
         "operationId": "Key Phrases",
         "consumes": [
           "application/json"
@@ -73,8 +73,7 @@
           "Successful Key Phrase request": {
             "$ref": "./examples//SuccessfulKeyPhrasesRequest.json"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2.0/languages": {
@@ -120,8 +119,7 @@
           "Successful Detect Language request": {
             "$ref": "./examples//SuccessfulLanguagesRequest.json"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2.0/sentiment": {
@@ -167,8 +165,7 @@
           "Successful Sentiment request": {
             "$ref": "./examples//SuccessfulSentimentRequest.json"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2.0/entities": {
@@ -177,7 +174,7 @@
           "Entities"
         ],
         "summary": "The API returns a list of recognized entities in a given document.",
-        "description": "To get even more information on each recognized entity we recommend using the Bing Entity Search API by querying for the recognized entities names. See the <a href=\"https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages\">Supported languages in Text Analytics API</a> for the list of enabled languages.",
+        "description": "",
         "operationId": "Entities",
         "consumes": [
           "application/json"
@@ -214,8 +211,7 @@
           "Successful Entities request": {
             "$ref": "./examples//SuccessfulEntitiesRequest.json"
           }
-        },
-        "deprecated": false
+        }
       }
     }
   },
@@ -254,7 +250,7 @@
       "type": "object",
       "properties": {
         "language": {
-          "description": "This is the 2 letter ISO 639-1 representation of a language. For example, use \"en\" for English; \"es\" for Spanish etc.,",
+          "description": "",
           "type": "string"
         },
         "id": {
