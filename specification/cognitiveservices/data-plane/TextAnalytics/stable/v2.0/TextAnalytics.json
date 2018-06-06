@@ -56,7 +56,7 @@
             "description": "Collection of documents to analyze. Documents can now contain a language field to indicate the text language",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/MultiLanguageBatchInput"
             }
           }
         ],
@@ -64,7 +64,7 @@
           "200": {
             "description": "A successful response results in 0 or more key phrases identified in each valid document",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/KeyPhraseBatchResult"
             }
           },
           "default": {
@@ -150,7 +150,7 @@
             "description": "Collection of documents to analyze.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/MultiLanguageBatchInput"
             }
           }
         ],
@@ -197,7 +197,7 @@
             "description": "Collection of documents to analyze.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/MultiLanguageBatchInput"
             }
           }
         ],
@@ -255,17 +255,71 @@
         }
       }
     },
-    "InternalError": {
+    "MultiLanguageBatchInput": {
       "type": "object",
       "properties": {
-        "code": {
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MultiLanguageInput"
+          }
+        }
+      }
+    },
+    "MultiLanguageInput": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "description": "This is the 2 letter ISO 639-1 representation of a language. For example, use \"en\" for English; \"es\" for Spanish etc.,",
           "type": "string"
         },
-        "message": {
+        "id": {
+          "description": "Unique, non-empty document identifier.",
           "type": "string"
         },
-        "innerError": {
-          "$ref": "#/definitions/InternalError"
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "Object": {
+      "type": "object",
+      "properties": {}
+    },
+    "KeyPhraseBatchResult": {
+      "type": "object",
+      "properties": {
+        "documents": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/KeyPhraseBatchResultItem"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ErrorRecord"
+          }
+        }
+      }
+    },
+    "KeyPhraseBatchResultItem": {
+      "type": "object",
+      "properties": {
+        "keyPhrases": {
+          "description": "A list of representative words or phrases. The number of key phrases returned is proportional to the number of words in the input document.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "description": "Unique document identifier.",
+          "type": "string",
+          "readOnly": true
         }
       }
     },
@@ -278,26 +332,6 @@
             "$ref": "#/definitions/Input"
           }
         }
-      },
-      "example": {
-        "documents": [
-          {
-            "id": "1",
-            "text": "Hello world"
-          },
-          {
-            "id": "2",
-            "text": "Bonjour tout le monde"
-          },
-          {
-            "id": "3",
-            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
-          },
-          {
-            "id": "4",
-            "text": ":) :( :D"
-          }
-        ]
       }
     },
     "Input": {
