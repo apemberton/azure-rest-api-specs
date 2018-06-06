@@ -98,7 +98,7 @@
           "200": {
             "description": "A successful call results in the detected language with the highest probability for each valid document",
             "schema": {
-              "$ref": "#/definitions/LanguageBatchResult"
+              "$ref": "#/definitions/ErrorResponse"
             }
           },
           "default": {
@@ -145,7 +145,7 @@
           "200": {
             "description": "A successful call results in each valid document getting a sentiment score between 0 and 1",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/SentimentBatchResult"
             }
           },
           "default": {
@@ -385,15 +385,15 @@
           "type": "string"
         }
       }
-    },
-    "LanguageBatchResult": {
+    }
+    "SentimentBatchResult": {
       "type": "object",
       "properties": {
         "documents": {
           "type": "array",
           "readOnly": true,
           "items": {
-            "$ref": "#/definitions/LanguageBatchResultItem"
+            "$ref": "#/definitions/SentimentBatchResultItem"
           }
         },
         "errors": {
@@ -405,39 +405,19 @@
         }
       }
     },
-    "LanguageBatchResultItem": {
+    "SentimentBatchResultItem": {
       "type": "object",
       "properties": {
+        "score": {
+          "format": "double",
+          "description": "A decimal number between 0 and 1 denoting the sentiment of the document. A score above 0.7 usually refers to a positive document while a score below 0.3 normally has a negative connotation. Mid values refer to neutral text.",
+          "type": "number",
+          "readOnly": true
+        },
         "id": {
           "description": "Unique document identifier.",
           "readOnly": true,
           "type": "string"
-        },
-        "detectedLanguages": {
-          "description": "A list of extracted languages.",
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "$ref": "#/definitions/DetectedLanguage"
-          }
-        }
-      }
-    },
-    "DetectedLanguage": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Long name of a detected language (e.g. English, French).",
-          "type": "string"
-        },
-        "iso6391Name": {
-          "description": "A two letter representation of the detected language according to the ISO 639-1 standard (e.g. en, fr).",
-          "type": "string"
-        },
-        "score": {
-          "format": "double",
-          "description": "A confidence score between 0 and 1. Scores close to 1 indicate 100% certainty that the identified language is true.",
-          "type": "number"
         }
       }
     },
