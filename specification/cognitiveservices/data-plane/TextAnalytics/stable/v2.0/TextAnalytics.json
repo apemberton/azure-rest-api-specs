@@ -17,14 +17,6 @@
       "apim_key": []
     }
   ],
-  "x-ms-parameterized-host": {
-    "hostTemplate": "{AzureRegion}.api.cognitive.microsoft.com",
-    "parameters": [
-      {
-        "$ref": "../../../Common/ExtendedRegions.json#/parameters/AzureRegion"
-      }
-    ]
-  },
   "basePath": "/text/analytics",
   "schemes": [
     "https"
@@ -200,7 +192,7 @@
           "200": {
             "description": "A successful call results in a list of recognized entities returned for each valid document",
             "schema": {
-              "$ref": "#/definitions/EntitiesBatchResult"
+              "$ref": "#/definitions/ErrorResponse"
             }
           },
           "default": {
@@ -229,6 +221,25 @@
             "$ref": "#/definitions/MultiLanguageInput"
           }
         }
+      },
+      "example": {
+        "documents": [
+          {
+            "language": "en",
+            "id": "1",
+            "text": "Hello world. This is some input text that I love."
+          },
+          {
+            "language": "fr",
+            "id": "2",
+            "text": "Bonjour tout le monde"
+          },
+          {
+            "language": "es",
+            "id": "3",
+            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
+          }
+        ]
       }
     },
     "MultiLanguageInput": {
@@ -341,6 +352,26 @@
             "$ref": "#/definitions/Input"
           }
         }
+      },
+      "example": {
+        "documents": [
+          {
+            "id": "1",
+            "text": "Hello world"
+          },
+          {
+            "id": "2",
+            "text": "Bonjour tout le monde"
+          },
+          {
+            "id": "3",
+            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
+          },
+          {
+            "id": "4",
+            "text": ":) :( :D"
+          }
+        ]
       }
     },
     "Input": {
@@ -444,96 +475,7 @@
           "type": "string"
         }
       }
-    },
-    "EntitiesBatchResult": {
-      "type": "object",
-      "properties": {
-        "documents": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EntitiesBatchResultItem"
-          },
-          "readOnly": true
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ErrorRecord"
-          },
-          "readOnly": true
-        }
-      }
-    },
-    "EntitiesBatchResultItem": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Unique document identifier.",
-          "type": "string",
-          "readOnly": true
-        },
-        "entities": {
-          "description": "Recognized entities in the document.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EntityRecord"
-          },
-          "readOnly": true
-        }
-      }
-    },
-    "EntityRecord": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Entity formal name.",
-          "type": "string"
-        },
-        "matches": {
-          "description": "List of instances this entity appears in the text.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MatchRecord"
-          },
-          "readOnly": true
-        },
-        "wikipediaLanguage": {
-          "description": "Wikipedia language for which the WikipediaId and WikipediaUrl refers to.",
-          "type": "string"
-        },
-        "wikipediaId": {
-          "description": "Wikipedia unique identifier of the recognized entity.",
-          "type": "string"
-        },
-        "wikipediaUrl": {
-          "description": "URL for the entity's English Wikipedia page.",
-          "type": "string",
-          "readOnly": true
-        },
-        "bingId": {
-          "description": "Bing unique identifier of the recognized entity. Use in conjunction with the Bing Entity Search API to fetch additional relevant information.",
-          "type": "string"
-        }
-      }
-    },
-    "MatchRecord": {
-      "type": "object",
-      "properties": {
-        "text": {
-          "description": "Entity text as appears in the request.",
-          "type": "string"
-        },
-        "offset": {
-          "format": "int32",
-          "description": "Start position (in Unicode characters) for the entity match text.",
-          "type": "integer"
-        },
-        "length": {
-          "format": "int32",
-          "description": "Length (in Unicode characters) for the entity match text.",
-          "type": "integer"
-        }
-      }
     }
+    
   }
 }
