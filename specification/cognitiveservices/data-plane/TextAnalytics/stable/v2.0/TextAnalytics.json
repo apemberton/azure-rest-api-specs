@@ -59,7 +59,7 @@
           "200": {
             "description": "A successful response results in 0 or more key phrases identified in each valid document",
             "schema": {
-              "$ref": "#/definitions/ErroResponse"
+              "$ref": "#/definitions/ErrorResponse"
             }
           },
           "default": {
