@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v2.0",
+    "version": "2.0",
     "title": "Text Analytics API",
     "description": "The Text Analytics API is a suite of text analytics web services..."
   },
