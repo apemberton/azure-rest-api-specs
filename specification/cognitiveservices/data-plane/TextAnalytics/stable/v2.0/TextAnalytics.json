@@ -225,36 +225,6 @@
     }
   },
   "definitions": {
-    "ErrorRecord": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Input document unique identifier the error refers to.",
-          "type": "string"
-        },
-        "message": {
-          "description": "Error message.",
-          "type": "string"
-        }
-      }
-    },
-    "ErrorResponse": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "target": {
-          "type": "string"
-        },
-        "innerError": {
-          "$ref": "#/definitions/InternalError"
-        }
-      }
-    },
     "MultiLanguageBatchInput": {
       "type": "object",
       "properties": {
@@ -320,6 +290,36 @@
           "description": "Unique document identifier.",
           "type": "string",
           "readOnly": true
+        }
+      }
+    },
+    "ErrorRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Input document unique identifier the error refers to.",
+          "type": "string"
+        },
+        "message": {
+          "description": "Error message.",
+          "type": "string"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "innerError": {
+          "$ref": "#/definitions/InternalError"
         }
       }
     },
