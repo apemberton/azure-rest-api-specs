@@ -229,25 +229,6 @@
             "$ref": "#/definitions/MultiLanguageInput"
           }
         }
-      },
-      "example": {
-        "documents": [
-          {
-            "language": "en",
-            "id": "1",
-            "text": "Hello world. This is some input text that I love."
-          },
-          {
-            "language": "fr",
-            "id": "2",
-            "text": "Bonjour tout le monde"
-          },
-          {
-            "language": "es",
-            "id": "3",
-            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
-          }
-        ]
       }
     },
     "MultiLanguageInput": {
@@ -265,6 +246,10 @@
           "type": "string"
         }
       }
+    },
+    "Object": {
+      "type": "object",
+      "properties": {}
     },
     "KeyPhraseBatchResult": {
       "type": "object",
@@ -356,26 +341,6 @@
             "$ref": "#/definitions/Input"
           }
         }
-      },
-      "example": {
-        "documents": [
-          {
-            "id": "1",
-            "text": "Hello world"
-          },
-          {
-            "id": "2",
-            "text": "Bonjour tout le monde"
-          },
-          {
-            "id": "3",
-            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
-          },
-          {
-            "id": "4",
-            "text": ":) :( :D"
-          }
-        ]
       }
     },
     "Input": {
