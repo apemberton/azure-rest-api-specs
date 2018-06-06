@@ -223,9 +223,6 @@
         },
         "target": {
           "type": "string"
-        },
-        "innerError": {
-          "$ref": "#/definitions/InternalError"
         }
       }
     }
