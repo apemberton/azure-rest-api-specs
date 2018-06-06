@@ -323,6 +323,20 @@
         }
       }
     },
+    "InternalError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "innerError": {
+          "$ref": "#/definitions/InternalError"
+        }
+      }
+    },
     "BatchInput": {
       "type": "object",
       "properties": {
