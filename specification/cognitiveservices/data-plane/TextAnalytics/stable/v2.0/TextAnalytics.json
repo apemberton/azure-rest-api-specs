@@ -59,7 +59,7 @@
           "200": {
             "description": "A successful response results in 0 or more key phrases identified in each valid document",
             "schema": {
-              "$ref": "#/definitions/KeyPhraseBatchResult"
+              "$ref": "#/definitions/ErroResponse"
             }
           },
           "default": {
@@ -220,43 +220,6 @@
     }
   },
   "definitions": {
-    "KeyPhraseBatchResult": {
-      "type": "object",
-      "properties": {
-        "documents": {
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "$ref": "#/definitions/KeyPhraseBatchResultItem"
-          }
-        },
-        "errors": {
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "$ref": "#/definitions/ErrorRecord"
-          }
-        }
-      }
-    },
-    "KeyPhraseBatchResultItem": {
-      "type": "object",
-      "properties": {
-        "keyPhrases": {
-          "description": "A list of representative words or phrases. The number of key phrases returned is proportional to the number of words in the input document.",
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "type": "string"
-          }
-        },
-        "id": {
-          "description": "Unique document identifier.",
-          "type": "string",
-          "readOnly": true
-        }
-      }
-    },
     "ErrorRecord": {
       "type": "object",
       "properties": {
