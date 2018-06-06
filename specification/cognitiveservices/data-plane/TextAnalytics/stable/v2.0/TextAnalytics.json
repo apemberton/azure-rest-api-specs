@@ -56,7 +56,7 @@
             "description": "Collection of documents to analyze. Documents can now contain a language field to indicate the text language",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/MultiLanguageBatchInput"
             }
           }
         ],
@@ -64,7 +64,7 @@
           "200": {
             "description": "A successful response results in 0 or more key phrases identified in each valid document",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/KeyPhraseBatchResult"
             }
           },
           "default": {
@@ -150,7 +150,7 @@
             "description": "Collection of documents to analyze.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/MultiLanguageBatchInput"
             }
           }
         ],
@@ -197,7 +197,7 @@
             "description": "Collection of documents to analyze.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/MultiLanguageBatchInput"
             }
           }
         ],
@@ -225,6 +225,93 @@
     }
   },
   "definitions": {
+    "MultiLanguageBatchInput": {
+      "type": "object",
+      "properties": {
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MultiLanguageInput"
+          }
+        }
+      },
+      "example": {
+        "documents": [
+          {
+            "language": "en",
+            "id": "1",
+            "text": "Hello world. This is some input text that I love."
+          },
+          {
+            "language": "fr",
+            "id": "2",
+            "text": "Bonjour tout le monde"
+          },
+          {
+            "language": "es",
+            "id": "3",
+            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
+          }
+        ]
+      }
+    },
+    "MultiLanguageInput": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "description": "This is the 2 letter ISO 639-1 representation of a language. For example, use \"en\" for English; \"es\" for Spanish etc.,",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique, non-empty document identifier.",
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "Object": {
+      "type": "object",
+      "properties": {}
+    },
+    "KeyPhraseBatchResult": {
+      "type": "object",
+      "properties": {
+        "documents": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/KeyPhraseBatchResultItem"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ErrorRecord"
+          }
+        }
+      }
+    },
+    "KeyPhraseBatchResultItem": {
+      "type": "object",
+      "properties": {
+        "keyPhrases": {
+          "description": "A list of representative words or phrases. The number of key phrases returned is proportional to the number of words in the input document.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "description": "Unique document identifier.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
     "ErrorRecord": {
       "type": "object",
       "properties": {
@@ -266,104 +353,6 @@
         },
         "innerError": {
           "$ref": "#/definitions/InternalError"
-        }
-      }
-    },
-    "BatchInput": {
-      "type": "object",
-      "properties": {
-        "documents": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Input"
-          }
-        }
-      },
-      "example": {
-        "documents": [
-          {
-            "id": "1",
-            "text": "Hello world"
-          },
-          {
-            "id": "2",
-            "text": "Bonjour tout le monde"
-          },
-          {
-            "id": "3",
-            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
-          },
-          {
-            "id": "4",
-            "text": ":) :( :D"
-          }
-        ]
-      }
-    },
-    "Input": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Unique, non-empty document identifier.",
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        }
-      }
-    },
-    "LanguageBatchResult": {
-      "type": "object",
-      "properties": {
-        "documents": {
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "$ref": "#/definitions/LanguageBatchResultItem"
-          }
-        },
-        "errors": {
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "$ref": "#/definitions/ErrorRecord"
-          }
-        }
-      }
-    },
-    "LanguageBatchResultItem": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Unique document identifier.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "detectedLanguages": {
-          "description": "A list of extracted languages.",
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "$ref": "#/definitions/DetectedLanguage"
-          }
-        }
-      }
-    },
-    "DetectedLanguage": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Long name of a detected language (e.g. English, French).",
-          "type": "string"
-        },
-        "iso6391Name": {
-          "description": "A two letter representation of the detected language according to the ISO 639-1 standard (e.g. en, fr).",
-          "type": "string"
-        },
-        "score": {
-          "format": "double",
-          "description": "A confidence score between 0 and 1. Scores close to 1 indicate 100% certainty that the identified language is true.",
-          "type": "number"
         }
       }
     },
