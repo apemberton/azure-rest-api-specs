@@ -111,7 +111,7 @@
           "200": {
             "description": "A successful call results in the detected language with the highest probability for each valid document",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/LanguageBatchResult"
             }
           },
           "default": {
@@ -266,6 +266,61 @@
         },
         "innerError": {
           "$ref": "#/definitions/InternalError"
+        }
+      }
+    },
+    "LanguageBatchResult": {
+      "type": "object",
+      "properties": {
+        "documents": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/LanguageBatchResultItem"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ErrorRecord"
+          }
+        }
+      }
+    },
+    "LanguageBatchResultItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique document identifier.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "detectedLanguages": {
+          "description": "A list of extracted languages.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/DetectedLanguage"
+          }
+        }
+      }
+    },
+    "DetectedLanguage": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Long name of a detected language (e.g. English, French).",
+          "type": "string"
+        },
+        "iso6391Name": {
+          "description": "A two letter representation of the detected language according to the ISO 639-1 standard (e.g. en, fr).",
+          "type": "string"
+        },
+        "score": {
+          "format": "double",
+          "description": "A confidence score between 0 and 1. Scores close to 1 indicate 100% certainty that the identified language is true.",
+          "type": "number"
         }
       }
     },
