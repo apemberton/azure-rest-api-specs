@@ -145,7 +145,7 @@
           "200": {
             "description": "A successful call results in each valid document getting a sentiment score between 0 and 1",
             "schema": {
-              "$ref": "#/definitions/SentimentBatchResult"
+              "$ref": "#/definitions/ErrorResponse"
             }
           },
           "default": {
@@ -192,7 +192,7 @@
           "200": {
             "description": "A successful call results in a list of recognized entities returned for each valid document",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/EntitiesBatchResult"
             }
           },
           "default": {
@@ -441,41 +441,95 @@
         }
       }
     },
-    "SentimentBatchResult": {
+    "EntitiesBatchResult": {
       "type": "object",
       "properties": {
         "documents": {
           "type": "array",
-          "readOnly": true,
           "items": {
-            "$ref": "#/definitions/SentimentBatchResultItem"
-          }
+            "$ref": "#/definitions/EntitiesBatchResultItem"
+          },
+          "readOnly": true
         },
         "errors": {
           "type": "array",
-          "readOnly": true,
           "items": {
             "$ref": "#/definitions/ErrorRecord"
-          }
+          },
+          "readOnly": true
         }
       }
     },
-    "SentimentBatchResultItem": {
+    "EntitiesBatchResultItem": {
       "type": "object",
       "properties": {
-        "score": {
-          "format": "double",
-          "description": "A decimal number between 0 and 1 denoting the sentiment of the document. A score above 0.7 usually refers to a positive document while a score below 0.3 normally has a negative connotation. Mid values refer to neutral text.",
-          "type": "number",
-          "readOnly": true
-        },
         "id": {
           "description": "Unique document identifier.",
-          "readOnly": true,
+          "type": "string",
+          "readOnly": true
+        },
+        "entities": {
+          "description": "Recognized entities in the document.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EntityRecord"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "EntityRecord": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Entity formal name.",
+          "type": "string"
+        },
+        "matches": {
+          "description": "List of instances this entity appears in the text.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MatchRecord"
+          },
+          "readOnly": true
+        },
+        "wikipediaLanguage": {
+          "description": "Wikipedia language for which the WikipediaId and WikipediaUrl refers to.",
+          "type": "string"
+        },
+        "wikipediaId": {
+          "description": "Wikipedia unique identifier of the recognized entity.",
+          "type": "string"
+        },
+        "wikipediaUrl": {
+          "description": "URL for the entity's English Wikipedia page.",
+          "type": "string",
+          "readOnly": true
+        },
+        "bingId": {
+          "description": "Bing unique identifier of the recognized entity. Use in conjunction with the Bing Entity Search API to fetch additional relevant information.",
           "type": "string"
         }
       }
+    },
+    "MatchRecord": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "description": "Entity text as appears in the request.",
+          "type": "string"
+        },
+        "offset": {
+          "format": "int32",
+          "description": "Start position (in Unicode characters) for the entity match text.",
+          "type": "integer"
+        },
+        "length": {
+          "format": "int32",
+          "description": "Length (in Unicode characters) for the entity match text.",
+          "type": "integer"
+        }
+      }
     }
-    
   }
 }
