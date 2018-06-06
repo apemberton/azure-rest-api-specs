@@ -51,7 +51,7 @@
             "description": "Collection of documents to analyze. Documents can now contain a language field to indicate the text language",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/MultiLanguageBatchInput"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         ],
@@ -145,7 +145,7 @@
             "description": "Collection of documents to analyze.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/MultiLanguageBatchInput"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         ],
@@ -192,7 +192,7 @@
             "description": "Collection of documents to analyze.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/MultiLanguageBatchInput"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         ],
@@ -220,56 +220,6 @@
     }
   },
   "definitions": {
-    "MultiLanguageBatchInput": {
-      "type": "object",
-      "properties": {
-        "documents": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MultiLanguageInput"
-          }
-        }
-      },
-      "example": {
-        "documents": [
-          {
-            "language": "en",
-            "id": "1",
-            "text": "Hello world. This is some input text that I love."
-          },
-          {
-            "language": "fr",
-            "id": "2",
-            "text": "Bonjour tout le monde"
-          },
-          {
-            "language": "es",
-            "id": "3",
-            "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
-          }
-        ]
-      }
-    },
-    "MultiLanguageInput": {
-      "type": "object",
-      "properties": {
-        "language": {
-          "description": "This is the 2 letter ISO 639-1 representation of a language. For example, use \"en\" for English; \"es\" for Spanish etc.,",
-          "type": "string"
-        },
-        "id": {
-          "description": "Unique, non-empty document identifier.",
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        }
-      }
-    },
-    "Object": {
-      "type": "object",
-      "properties": {}
-    },
     "KeyPhraseBatchResult": {
       "type": "object",
       "properties": {
