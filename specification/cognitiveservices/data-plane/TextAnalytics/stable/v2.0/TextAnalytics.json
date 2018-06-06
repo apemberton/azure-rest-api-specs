@@ -30,7 +30,7 @@
     "https"
   ],
   "paths": {
-    "/v2.0/keyPhrases": {
+    "/keyPhrases": {
       "post": {
         "tags": [
           "Key Phrases"
@@ -77,7 +77,7 @@
         "deprecated": false
       }
     },
-    "/v2.0/languages": {
+    "/languages": {
       "post": {
         "tags": [
           "Detect Language"
@@ -124,7 +124,7 @@
         "deprecated": false
       }
     },
-    "/v2.0/sentiment": {
+    "/sentiment": {
       "post": {
         "tags": [
           "Sentiment"
@@ -171,7 +171,7 @@
         "deprecated": false
       }
     },
-    "/v2.0/entities": {
+    "/entities": {
       "post": {
         "tags": [
           "Entities"
