@@ -77,11 +77,6 @@
                             "$ref": "#/definitions/ImagePrediction"
                         }
                     }
-                },
-                "x-ms-examples": {
-                    "Successful PredictImageUrl request": {
-                        "$ref": "./examples/PredictImageUrl.json"
-                    }
                 }
             }
         },
@@ -145,11 +140,6 @@
                         "schema": {
                             "$ref": "#/definitions/ImagePrediction"
                         }
-                    }
-                },
-                "x-ms-examples": {
-                    "Successful PredictImage request": {
-                        "$ref": "./examples/PredictImage.json"
                     }
                 }
             }
@@ -221,11 +211,6 @@
                             "$ref": "#/definitions/ImagePrediction"
                         }
                     }
-                },
-                "x-ms-examples": {
-                    "Successful PredictImageUrlWithNoStore request": {
-                        "$ref": "./examples/PredictImageUrlWithNoStore.json"
-                    }
                 }
             }
         },
@@ -289,11 +274,6 @@
                         "schema": {
                             "$ref": "#/definitions/ImagePrediction"
                         }
-                    }
-                },
-                "x-ms-examples": {
-                    "Successful PredictImageWithNoStore request": {
-                        "$ref": "./examples/PredictImageWithNoStore.json"
                     }
                 }
             }
